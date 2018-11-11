@@ -1,101 +1,294 @@
-
 <!DOCTYPE html>
 <html>
-<head>
-  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <title>Millenial Problem Generator</title>
-  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <meta name="robots" content="noindex, nofollow">
-  <meta name="googlebot" content="noindex, nofollow">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>Millenial Problem Generator</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="googlebot" content="noindex, nofollow" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <style type="text/css">
-    body {
-  background: #20262E;
-  padding: 20px;
-  font-family: Helvetica;
-	    font-size:48pt;
-	    color: #fff;
-}
+    <style type="text/css">
+      body {
+        background: #20262e;
+        padding: 2em;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 2.5vw;
+        color: #fff;
+      }
+      button {
+        font-size: 2.5vw;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .top {
+        margin: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="top">
+      <a id="twitter-share-button"
+      target="_"
+      href="https://twitter.com/intent/tweet?text=I have a problem">
+    Tweet</a>
+  </div>
+  <div class="top">
+    <button onclick="updateProblem()">I need a new problem.</button>
+  </div>
+    <h1 id="problem">I have a problem :(</h1>
+    <script>
+      DATA = {
+        app: [
+          'Instacart',
+          'Instagram',
+          'Postmates',
+          'Snapchat',
+          'Spotify',
+          'Tinder',
+          'Twitter',
+          'Uber',
+          'Venmo',
+          'Youtube',
+          'Doordash',
+          'My mobile banking app',
+          'Pandora',
+          'Slack'
+        ],
+        noun: [
+          '90s themed hair accessory',
+          'Bernie merchandise',
+          'Reusable water bottle',
+          'Tesla',
+          'Trump merchandise',
+          'adhd meds',
+          'anxiety meds',
+          'avocado toast',
+          'avocado',
+          'avocado',
+          'baby boomer',
+          'bath bomb',
+          'beauty box',
+          'bike',
+          'bitcoin',
+          'body positivity',
+          'bomber jacket',
+          'bubble tea',
+          'corgi',
+          'craft beer',
+          'dead meme',
+          'female-led superhero movie',
+          'housing crisis',
+          'housing crisis',
+          'indie band',
+          'insomnia',
+          'internet',
+          'ironic sweater',
+          'key fob',
+          'kombucha',
+          'la croix',
+          'manbun',
+          'meme',
+          'netflix',
+          'nostalgia',
+          'nude',
+          'open relationship',
+          'overpriced apartment',
+          'phone',
+          'polaroid camera',
+          'pug',
+          'ramen',
+          'record',
+          'rent money',
+          'scented candle',
+          'self-driving car',
+          'selfie',
+          'sexual health',
+          'sexuality',
+          'siracha',
+          'sleeping schedule',
+          'spongebob memes',
+          'succulent',
+          'sushi',
+          'therapy',
+          'unemployment',
+          'vape',
+          'vine compilation',
+          'wanderlust',
+          'weed'
+        ],
+        pluralNoun: [
+          '90s themed hair accessories',
+          'Bernie merchandise',
+          'Polaroid cameras',
+          'Reusable water bottles',
+          'Teslas',
+          'Trump merchandise',
+          'adhd meds',
+          'anxiety meds',
+          'avocado toast',
+          'avocados',
+          'avocados',
+          'baby boomers',
+          'bath bombs',
+          'beauty boxes',
+          'bikes',
+          'bitcoins',
+          'body positivity',
+          'bomber jackets',
+          'bubble tea',
+          'corgis',
+          'craft beer',
+          'dead memes',
+          'female-led superhero movies',
+          'housing crises',
+          'housing crisis',
+          'indie bands',
+          'insomnia',
+          'internet',
+          'ironic sweaters',
+          'key fobs',
+          'kombucha',
+          'la croix',
+          'manbuns',
+          'memes',
+          'memes',
+          'netflix',
+          'nostalgia',
+          'nudes',
+          'open relationships',
+          'overpriced apartments',
+          'people',
+          'phones',
+          'pugs',
+          'ramen',
+          'records',
+          'rent money',
+          'scented candles',
+          'self-driving cars',
+          'selfies',
+          'sexual health',
+          'sexuality',
+          'siracha',
+          'sleeping schedules',
+          'spongebob memes',
+          'succulents',
+          'sushi',
+          'therapy',
+          'unemployment',
+          'vapes',
+          'vine compilations',
+          'wanderlust',
+          'weed'
+        ],
+        verb: [
+          'Tweeted',
+          'complained',
+          'posted',
+          'protested',
+          'protested',
+          'selfied',
+          'snapchatted'
+        ],
+        location: [
+          'Amazon store',
+          'Apple store',
+          'Bubble tea shop',
+          'Philz coffee',
+          'beach',
+          'cat cafe',
+          'coworking space',
+          'deli',
+          'food truck',
+          'fusion restaurant',
+          'indie concert',
+          'laundromat',
+          'library',
+          'pop-up shop',
+          'protest',
+          'ramen place',
+          'record store',
+          'rent-controlled apartment',
+          'tea store',
+          'therapist\’s office',
+          'thrift store',
+          'trendy coffee shop',
+          'weed store',
+          'yoga studio'
+        ],
+        containerLocation: [
+          'Bath and Body Works',
+          'Bay Area',
+          'Brooklyn',
+          'Burning Man',
+          'H&M',
+          'Ikea',
+          'Lush',
+          'Portland',
+          'San Francisco',
+          'Seattle',
+          'Soulcycle',
+          'Whole Foods',
+          'the Tesla',
+          'the Uber',
+          'the self-driving car'
+        ],
+        properNoun: [
+          'Bernie Sanders',
+          'Beyonce',
+          'Carson',
+          'Elon Musk',
+          'Karla',
+          'Kayla',
+          'Trump',
+          'Victoria'
+        ],
+        phrase: [
+          "${app} is being slow, and now I don't have any ${pluralNoun}.",
+          '${app} is down and I can\’t access my ${noun}.',
+          'I\’m out of ${pluralNoun}.',
+          'New York Times says I\’m killing the ${noun} industry.',
+          'I left my ${noun} at the ${location}.',
+          'I left my ${noun} in ${containerLocation}.',
+          'I\’m really anxious about ${pluralNoun}.',
+          'I\’m really anxious about ${app}.',
+          'I\’m sick of seeing ${pluralNoun} at the ${location}.',
+          'I saw ${properNoun} at the ${location}.',
+          'I broke my ${noun}.',
+          'Can I get same day delivery with ${pluralNoun}?',
+          'I have too much ${pluralNoun} but not a single ${noun}.',
+          'I can\'t afford ${pluralNoun}, so I\'ll get a ${noun} instead.',
+          'I can\'t afford ${pluralNoun}.'
+        ]
+      };
 
-#app {
-  background: #fff;
-  border-radius: 4px;
-  padding: 20px;
-  transition: all 0.2s;
-}
+      String.prototype.interpolate = function(params) {
+        const names = Object.keys(params);
+        const vals = Object.values(params);
+        return new Function(...names, `return \`${this}\`;`)(...vals);
+      };
 
-li {
-  margin: 8px 0;
-}
+      const randValue = values =>
+        values[Math.floor(Math.random() * values.length)];
 
-h2 {
-  font-weight: bold;
-  margin-bottom: 15px;
-}
+      const makeProblem = data => {
+        const keys = Object.keys(data);
+        const randValues = {};
+        for (const key of keys) {
+          randValues[key] = randValue(data[key]);
+        }
+        return randValues.phrase.interpolate(randValues);
+      };
 
-.done {
-  color: rgba(0, 0, 0, 0.3);
-  text-decoration: line-through;
-}
+      function updateProblem() {
+        var problem = makeProblem(DATA);
+        var el = document.getElementById('problem');
+        var tweetLink = document.getElementById('twitter-share-button');
+        el.innerText = problem;
+        var problemForUrl = `${problem} https://decotext.github.io`;
+        tweetLink.setAttribute('href', encodeURI(`https://twitter.com/intent/tweet?text=${problemForUrl} `)+'%23millenialproblemgenerator');
+      }
 
-input {
-  margin-right: 5px;
-}
-  </style>
-
-
-</head>
-<body>
-	<h1 id="problem">I have a problem :(</h1>
-	<button onclick="updateProblem()">Update Problem</button>
-  <script>
-	DATA = {
-  	app: ['Uber', 'Instacart'],
-  	noun: ['avocado', 'pug', 'Bernie merchandise', 'Trump merchandise', 'reusable water bottle', ],
-    pluralNoun: ["Reusable water bottles", "phones", "key fobs", "bomber jackets", "90s themed hair accessories"],
-    verb: ['protested', 'selfied', 'posted', 'complained'],
-    location: ["Bubble tea shop", "Philz coffee", "protest", "beach", "weed store", "fusion restaurant"],
-    containerLocation: ['Apple Store'],
-		properNoun: ["Bernie Sanders", "Trump", "Beyonce"],
-    phrase: [
-    	"${app} is being slow, and now I don't have any ${noun}.",
-      "${app} is down and I can’t access my ${noun}.",
-			"I’m out of ${noun}.",
-			"New York Times says I’m killing the ${noun} industry.",
-			"I left my ${noun} at the ${location}.",
-			"I left my ${noun} in ${containerLocation}.",
-			"I’m really anxious about ${pluralNoun}.",
-			"I’m really anxious about ${app}.",
-			"I’m sick of seeing ${noun} at the ${location}.",
-		    "I saw ${properNoun} at the ${location}."
-    ]
-  };
-  
-String.prototype.interpolate = function(params) {
-  const names = Object.keys(params);
-  const vals = Object.values(params);
-  return new Function(...names, `return \`${this}\`;`)(...vals);
-}
-
-const randValue = values => values[Math.floor(Math.random() * values.length)];
-
-const makeProblem = (data) => {
-	const keys = Object.keys(data);
-  const randValues = {};
-  for (const key of keys) {
-  	randValues[key] = randValue(data[key]);
-  }
-  return randValues.phrase.interpolate(randValues)
-};
-	  
-function updateProblem() {
-	var el = document.getElementById('problem');
-	el.innerText = makeProblem(DATA);
-}
-
-	  updateProblem();
-	  window.setInterval(updateProblem, 5000);
-</script>
-	</body>
+      updateProblem();
+    </script>
+  </body>
 </html>
