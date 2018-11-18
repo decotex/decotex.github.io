@@ -280,13 +280,18 @@
         return randValues.phrase.interpolate(randValues);
       };
 
+      function twitterLink(problem) {
+        var problemForUrl = `${problem} https://decotex.github.io`;
+        return encodeURI(`https://twitter.com/intent/tweet?text=${problemForUrl} `)+'%23millennialproblemgenerator';
+      }
+
       function updateProblem() {
         var problem = makeProblem(DATA);
         var el = document.getElementById('problem');
-        var tweetLink = document.getElementById('twitter-share-button');
         el.innerText = problem;
-        var problemForUrl = `${problem} https://decotex.github.io`;
-        tweetLink.setAttribute('href', encodeURI(`https://twitter.com/intent/tweet?text=${problemForUrl} `)+'%23millennialproblemgenerator');
+
+        var tweetLink = document.getElementById('twitter-share-button');
+        tweetLink.setAttribute('href', twitterLink(problem));
       }
 
       updateProblem();
