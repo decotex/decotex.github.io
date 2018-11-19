@@ -13,7 +13,7 @@ function loadData(callback) {
       'Venmo',
       'Youtube',
       'Doordash',
-      'My mobile banking app',
+      'my mobile banking app',
       'Pandora',
       'Slack'
     ],
